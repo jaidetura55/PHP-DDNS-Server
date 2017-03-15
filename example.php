@@ -12,7 +12,7 @@ $recursiveProvider = new yswery\DNS\RecursiveProvider($options);
 $stackableResolver = new yswery\DNS\StackableResolver(array($jsonStorageProvider, $recursiveProvider));
 
 // Creating a new instance of our class
-$dns = new yswery\DNS\Server($stackableResolver);
+$dns = new yswery\DNS\Server($stackableResolver, '0.0.0.0', 553, 60);
 
 // Starting our DNS server
 $dns->start();
