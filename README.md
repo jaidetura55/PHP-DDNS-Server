@@ -26,7 +26,7 @@ PHP Requirements
 Installation:
 ========
 ```
-apt install php5-cli supervisor
+apt install php5-cli supervisor mysql-server
 
 mkdir /var/ddns
 git clone https://github.com/nemiah/PHP-DDNS-Server.git
@@ -42,6 +42,8 @@ cp dns_record.json ../
 
 cp serverEth0.conf /etc/supervisor/conf.d/
 cp serverEth1.conf /etc/supervisor/conf.d/
+
+mysql -uroot -p < setup.sql
 
 cd /var/ddns
 nano serverEth0.php #change IP-address to eth0
