@@ -5,7 +5,7 @@ This is a DDNS (or DynDNS)-Server written in pure PHP.
 The records lie in a MySQL database and can easily be updated via the update.php script.  
 The installation information below is suited for a newly installed debian jessie.  
   
-Only one thread answers requests per interface. So maybe don't use for heavy load :)
+Only one thread answers requests per interface. So maybe don't use for heavy load 😃  
 Requires PHP>= 5.3
 
 Supported record types
