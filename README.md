@@ -32,13 +32,9 @@ mkdir /var/ddns
 git clone https://github.com/nemiah/PHP-DDNS-Server.git
 
 cd PHP-DDNS-Server
-wget https://getcomposer.org/installer
-php installer
-php composer.phar update
 
 cp serverEth0.php ../
 cp serverEth1.php ../
-cp dns_record.json ../
 
 cp serverEth0.conf /etc/supervisor/conf.d/
 cp serverEth1.conf /etc/supervisor/conf.d/

@@ -1,5 +1,5 @@
 <?php
-require "loader.php";
+require "/var/ddns/loader.php";
 
 $mysqlStorageProvider = new yswery\DNS\MySQLStorageProvider("localhost", "phpddns", "tkwu0xrrF0JqMShc", "phpddns");
 
