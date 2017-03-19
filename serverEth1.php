@@ -1,9 +1,9 @@
 <?php
 
-require "vendor/autoload.php";
+require "/var/ddns/PHP-DDNS-Server/vendor/autoload.php";
 
 // JSON formatted DNS records file
-$record_file = 'dns_record.json';
+$record_file = '/var/ddns/dns_record.json';
 $jsonStorageProvider = new yswery\DNS\JsonStorageProvider($record_file);
 
 // Recursive provider acting as a fallback to the JsonStorageProvider
