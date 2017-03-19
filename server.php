@@ -1,5 +1,5 @@
 <?php
-require __DIR__."loader.php";
+require __DIR__."/loader.php";
 
 $mysqlStorageProvider = new yswery\DNS\MySQLStorageProvider(new \yswery\DNS\MySQLConfigProvider());
 
