@@ -3,7 +3,7 @@ PHP DDNS Server
 
 This is a DDNS or DynDNS-Server written in pure PHP.
 
-Support Record Types
+Supported record types
 ====================
 
 * A
@@ -18,7 +18,7 @@ Support Record Types
 * AXFR
 * ANY
 
-PHP Requirements
+PHP requirements
 ================
 
 * `PHP 5.3+`

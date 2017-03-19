@@ -1,18 +1,11 @@
 <?php
+require "loader.php";
 
-require "/var/ddns/PHP-DDNS-Server/vendor/autoload.php";
+$mysqlStorageProvider = new yswery\DNS\MySQLStorageProvider("localhost", "phpddns", "tkwu0xrrF0JqMShc", "phpddns");
 
-// JSON formatted DNS records file
-$record_file = '/var/ddns/dns_record.json';
-$jsonStorageProvider = new yswery\DNS\JsonStorageProvider($record_file);
+$stackableResolver = new yswery\DNS\StackableResolver(array($mysqlStorageProvider));
 
-// Recursive provider acting as a fallback to the JsonStorageProvider
-#$recursiveProvider = new yswery\DNS\RecursiveProvider($options);
-
-$stackableResolver = new yswery\DNS\StackableResolver(array($jsonStorageProvider));
-
-// Creating a new instance of our class
 $dns = new yswery\DNS\Server($stackableResolver, '188.94.24.106', 53, 60);
+#$dns = new yswery\DNS\Server($stackableResolver, '0.0.0.0', 5553, 60);
 
-// Starting our DNS server
 $dns->start();

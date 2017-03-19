@@ -1,6 +1,6 @@
 CREATE USER 'phpddns'@'localhost' IDENTIFIED WITH mysql_native_password;
 GRANT USAGE ON *.* TO 'phpddns'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-SET PASSWORD FOR 'phpddns'@'localhost' = 'tkwu0xrrF0JqMShc';
+SET PASSWORD FOR 'phpddns'@'localhost' = PASSWORD('tkwu0xrrF0JqMShc');
 
 CREATE DATABASE IF NOT EXISTS `phpddns`;
 GRANT ALL PRIVILEGES ON `phpddns`.* TO 'phpddns'@'localhost';
