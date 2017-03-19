@@ -3,8 +3,8 @@
         "A": "111.111.111.111",
         "MX": "mail.nemiah.de",
         "NS": [
-			"lb01.furtmeier.it", 
-			"lb03.furtmeier.it"
+			"ns1.nemiah.de", 
+			"ns2.nemiah.de"
 		],
 		"SOA": {
 			"mname": "ns1.nemiah.de",
@@ -17,7 +17,11 @@
 		}
     },
     
-    "home.nemiah.de": {
-        "A": "222.222.222.222"
+    "ns1.nemiah.de": {
+        "A": "188.94.24.106"
+    },
+
+    "ns2.nemiah.de": {
+        "A": "188.94.28.124"
     }
 }

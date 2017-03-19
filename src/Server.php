@@ -63,17 +63,24 @@ class Server {
     private function ds_handle_query($buffer, $ip, $port)
     {
         $data = unpack('npacket_id/nflags/nqdcount/nancount/nnscount/narcount', $buffer);
+		#print_r($data);
         $flags = $this->ds_decode_flags($data['flags']);
         $offset = 12;
 
+		
         $question = $this->ds_decode_question_rr($buffer, $offset, $data['qdcount']);
+		#print_r($question);
         $answer = $this->ds_decode_rr($buffer, $offset, $data['ancount']);
         $authority = $this->ds_decode_rr($buffer, $offset, $data['nscount']);
         $additional = $this->ds_decode_rr($buffer, $offset, $data['arcount']);
         $answer = $this->ds_storage->get_answer($question);
         $flags['qr'] = 1;
         $flags['ra'] = 0;
-
+		$flags['aa'] = 1;
+		#$flags['ad'] = 0;
+		echo "request from $ip:$port for domain ".$question[0]["qname"]."\n";
+		
+		#print_r($answer);
         $qdcount = count($question);
         $ancount = count($answer);
         $nscount = count($authority);
