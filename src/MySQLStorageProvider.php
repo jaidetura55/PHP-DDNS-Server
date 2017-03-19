@@ -10,13 +10,13 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 	private $DS_TTL;
 	private $data;
 
-	public function __construct($host, $user, $password, $database, $default_ttl = 60) {
-		$this->c = new mysqli($host, $user, $password, $database);
+	public function __construct(MySQLConfigProvider $config, $default_ttl = 60) {
+		$this->c = new mysqli($config->host, $config->user, $config->password, $config->database);
 		if (!$this->c)
 			throw new Exception('Unable to establish MySQL connection');
 		$this->c->close();
 
-		$this->data = array("host" => $host, "user" => $user, "password" => $password, "database" => $database);
+		$this->data = $config;
 
 		if (!is_int($default_ttl))
 			throw new Exception('Default TTL must be an integer.');
@@ -29,7 +29,7 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 		$domain = trim($question[0]['qname'], '.');
 		$type = RecordTypeEnum::get_name($question[0]['qtype']);
 
-		$c = new mysqli($this->data["host"], $this->data["user"], $this->data["password"], $this->data["database"]);
+		$c = new mysqli($this->data->host, $this->data->user, $this->data->password, $this->data->database);
 		if (!$c)
 			throw new Exception('Unable to establish MySQL connection');
 		

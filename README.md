@@ -2,6 +2,7 @@ PHP DDNS Server
 ==============
 
 This is a DDNS or DynDNS-Server written in pure PHP.
+The installation information below is suited for a newly installed debian jessie.
 
 Supported record types
 ====================
@@ -26,7 +27,7 @@ PHP requirements
 Installation:
 ========
 ```
-apt install php5-cli supervisor mysql-server
+apt install php5-cli php5-mysqlnd supervisor mysql-server libapache2-mod-php5
 
 mkdir /var/ddns
 git clone https://github.com/nemiah/PHP-DDNS-Server.git
@@ -47,5 +48,5 @@ nano serverEth1.php #change IP-address to eth1
 
 service supervisor restart
 
-dig @localhost nemiah.de
+dig @IP-address nemiah.de
 ```

@@ -19,7 +19,7 @@ CREATE TABLE `NSEntry` (
 INSERT INTO `NSEntry` (`NSEntryID`, `NSEntryDomain`, `NSEntryType`, `NSEntryData`) VALUES
 (1, 'nemiah.de', 'A', '111.111.111.111'),
 (2, 'nemiah.de', 'MX', 'mail.nemiah.de'),
-(3, 'nemia.de', 'NS', 'ns1.nemiah.de,ns2.nemiah.de'),
+(3, 'nemiah.de', 'NS', 'ns1.nemiah.de,ns2.nemiah.de'),
 (4, 'nemiah.de', 'SOA', 'mname:ns1.nemiah.de,rname:admin.nemiah.de,serial:20170319,retry:7200,refresh:1800,expire:8600,minimum-ttl:60'),
 (5, 'ns1.nemiah.de', 'A', '188.94.24.106'),
 (7, 'ns2.nemiah.de', 'A', '188.94.28.124');
