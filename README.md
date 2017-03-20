@@ -35,6 +35,7 @@ cd PHP-DDNS-Server
 
 cp serverAll.conf /etc/supervisor/conf.d/
 ln -s /var/ddns/PHP-DDNS-Server/update.php /var/www/html/update.php
+ln -s /var/ddns/PHP-DDNS-Server/checkip.php /var/www/html/checkip.php
 
 mysql -uroot -p < setup.sql
 
@@ -45,7 +46,20 @@ dig @localhost nemiah.de
 
 IP update:
 ----------
+Via cron:
 ```
-wget http://nemiah.de/update.php?domain=home.nemiah.de&username=nena&password=Hallo123&ip=123.123.123.123
+wget -qO- https://nemiah.de/update.php?domain=home.nemiah.de&username=nena&password=Hallo123&ip=123.123.123.123 &> /dev/null
 dig @localhost home.nemiah.de
+```
+
+Via ddclient:
+```
+# /etc/ddclient.conf
+
+protocol=dyndns2
+use=web, web=nemiah.de/checkip.php
+server=nemiah.de/update.php
+login=nena
+password='Hallo123'
+home.nemiah.de
 ```
