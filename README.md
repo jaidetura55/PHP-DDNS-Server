@@ -23,6 +23,11 @@ Supported record types
 * AXFR
 * ANY
 
+Supported DDNS protocols:
+----------------------
+ * wget
+ * dyndns2
+
 Installation:
 -------------
 ```
