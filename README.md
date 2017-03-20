@@ -15,17 +15,13 @@ Supported record types
 * NS
 * CNAME
 * SOA
-* PTR
 * MX
 * TXT
 * AAAA
-* OPT
-* AXFR
-* ANY
 
 Supported DDNS protocols:
 ----------------------
- * wget
+ * cron/wget
  * dyndns2
 
 Installation:
@@ -51,7 +47,7 @@ dig @localhost nemiah.de
 
 IP update:
 ----------
-Via cron:
+Via cron/wget:
 ```
 wget -qO- https://nemiah.de/update.php?domain=home.nemiah.de&username=nena&password=Hallo123&ip=123.123.123.123 &> /dev/null
 dig @localhost home.nemiah.de
