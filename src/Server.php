@@ -78,7 +78,7 @@ class Server {
         $flags['ra'] = 0;
 		$flags['aa'] = 1;
 		#$flags['ad'] = 0;
-		echo "request from $ip:$port for domain ".$question[0]["qname"]."\n";
+		echo date("M d H:i:s").": request from $ip:$port for domain ".$question[0]["qname"]."\n";
 		
 		#print_r($answer);
         $qdcount = count($question);
