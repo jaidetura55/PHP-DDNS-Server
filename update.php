@@ -45,4 +45,10 @@ $q = $c->query("
 		NSEntryType = 'A' 
 		AND NSEntryDomain = '".$c->real_escape_string($domain)."'");
 
+$update = new stdClass();
+$update->domain = $domain;
+$update->ip = $ip;
+
+msg_send(msg_get_queue(3456), 8, $update, true, false, $err);
+	
 echo "good ".$ip;
