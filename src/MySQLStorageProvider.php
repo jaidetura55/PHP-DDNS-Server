@@ -31,7 +31,7 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 	private function query($domain, $type){
 		$result = array();
 		foreach($this->cache AS $t){
-			if($t->NSEntryDomain == $domain AND $t->NSEntryType == $type)
+			if(strtolower($t->NSEntryDomain) == strtolower($domain) AND $t->NSEntryType == $type)
 				$result[] = $t;
 		}
 		

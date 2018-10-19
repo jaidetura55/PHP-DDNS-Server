@@ -78,8 +78,14 @@ class Server {
         $flags['ra'] = 0;
 		$flags['aa'] = 1;
 		#$flags['ad'] = 0;
-		echo date("M d H:i:s").": request from $ip:$port for domain ".$question[0]["qname"]."\n";
-		
+		echo date("M d H:i:s")." ($this->DS_IP): request from $ip:$port for domain ".$question[0]["qname"].
+			"(".(isset($question[0]) ? RecordTypeEnum::get_name($question[0]['qtype']) : "XX").") -> ".
+			(isset($answer[0]) ? is_array($answer[0]["data"]["value"]) ? implode(" ", $answer[0]["data"]["value"]) : $answer[0]["data"]["value"] : "unbekannt")."\n";
+		#if(!isset($answer[0])){
+		#	var_dump($data);
+		#	var_dump($question);
+		#	var_dump($answer);
+		#}
 		#print_r($answer);
         $qdcount = count($question);
         $ancount = count($answer);
@@ -406,8 +412,11 @@ class Server {
         $codes = array(E_ERROR => 'Error', E_WARNING => 'Warning', E_PARSE => 'Parse Error', E_NOTICE => 'Notice', E_CORE_ERROR => 'Core Error', E_CORE_WARNING => 'Core Warning', E_COMPILE_ERROR => 'Compile Error', E_COMPILE_WARNING => 'Compile Warning', E_USER_ERROR => 'User Error', E_USER_WARNING => 'User Warning', E_USER_NOTICE => 'User Notice', E_STRICT => 'Strict Notice', E_RECOVERABLE_ERROR => 'Recoverable Error', E_DEPRECATED => 'Deprecated Error', E_USER_DEPRECATED => 'User Deprecated Error');
 
         $type = isset($codes[$code]) ? $codes[$code] : 'Unknown Error';
-
-        die(sprintf('DNS Server error: [%s] "%s" in file "%s" on line "%d".%s', $type, $error, $file, $line, PHP_EOL));
+		$message = sprintf(date("M d H:i:s").' %s: "%s" in file "%s" on line "%d".%s', $type, $error, $file, $line, PHP_EOL);
+		if($code == E_ERROR)
+	        die($message);
+		
+		echo $message;
     }
 
 }
