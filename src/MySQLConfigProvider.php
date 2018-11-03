@@ -1,23 +1,26 @@
 <?php
+
 namespace yswery\DNS;
 
 class MySQLConfigProvider {
+
 	public $host = "localhost";
 	public $user = "phpddns";
 	public $password = "tkwu0xrrF0JqMShc";
 	public $database = "phpddns";
-	
+
 	function __construct($host = null, $user = null, $password = null, $database = null) {
-		if($host)
+		if ($host)
 			$this->host = $host;
-		
-		if($user)
+
+		if ($user)
 			$this->user = $user;
-		
-		if($password)
+
+		if ($password)
 			$this->password = $password;
-		
-		if($database)
+
+		if ($database)
 			$this->database = $database;
 	}
+
 }
