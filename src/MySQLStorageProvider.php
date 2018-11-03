@@ -9,8 +9,9 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 
 	private $DS_TTL;
 	private $cache = array();
+	private $messageQueue = 3456;
 	
-	public function __construct(MySQLConfigProvider $config, $default_ttl = 60) {
+	public function __construct(MySQLConfigProvider $config, $default_ttl = 60, $messageQueue = 3456) {
 		$c = new mysqli($config->host, $config->user, $config->password, $config->database);
 		if (!$c)
 			throw new Exception('Unable to establish MySQL connection');
@@ -20,6 +21,7 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 			throw new Exception('Default TTL must be an integer.');
 
 		$this->DS_TTL = $default_ttl;
+		$this->messageQueue = $messageQueue;
 		
 		$q = $c->query("SELECT * FROM NSEntry");
 		while($t = $q->fetch_object())
@@ -39,7 +41,7 @@ class MySQLStorageProvider extends AbstractStorageProvider {
 	}
 	
 	private function update(){
-		$ip = msg_get_queue(3456);
+		$ip = msg_get_queue($this->messageQueue);
 		msg_receive($ip, 0, $msgtype, 5000, $message, true, MSG_IPC_NOWAIT, $err);
 		if($msgtype == 8 AND $message != false){
 			foreach($this->cache AS $t){

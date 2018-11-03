@@ -50,5 +50,6 @@ $update->domain = $domain;
 $update->ip = $ip;
 
 msg_send(msg_get_queue(3456), 8, $update, true, false, $err);
+msg_send(msg_get_queue(3457), 8, $update, true, false, $err);
 	
 echo "good ".$ip;
