@@ -40,7 +40,8 @@ $q = $c->query("
 	UPDATE 
 		NSEntry 
 	SET 
-		NSEntryData = '".$c->real_escape_string($ip)."'
+		NSEntryData = '".$c->real_escape_string($ip)."',
+		NSEntryUpdate = '".time()."'
 	WHERE 
 		NSEntryType = 'A' 
 		AND NSEntryDomain = '".$c->real_escape_string($domain)."'");

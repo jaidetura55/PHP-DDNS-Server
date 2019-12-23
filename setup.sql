@@ -13,7 +13,8 @@ CREATE TABLE `NSEntry` (
   `NSEntryID` int(10) NOT NULL,
   `NSEntryDomain` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `NSEntryType` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `NSEntryData` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+  `NSEntryData` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `NSEntryUpdate` int(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `NSEntry` (`NSEntryID`, `NSEntryDomain`, `NSEntryType`, `NSEntryData`) VALUES
